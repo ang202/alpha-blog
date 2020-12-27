@@ -1,5 +1,72 @@
 @import "bootstrap/dist/css/bootstrap";
 
 .navbar {
-  background-color: #fdf6ea !important;
+  background-color: black !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#home-container {
+  padding-top: 25px;
+}
+
+.jumbotron {
+  background-image: asset-url("background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 525px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+  min-height: 582px;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+.home-text{
+  margin:40px 20px auto 20px
+}
+
+.mt-4{
+  margin-top: 0% !important;
+  padding: 1.5rem;
+}
+
+body{
+  background-color: lightgray;
+}
+
+.make-flex{
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.make-flex .btn{
+  max-height: 40px;
+  margin-top: 30px;
+  min-width: 100px;
+  padding-top: 5px;
 }

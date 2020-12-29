@@ -3,7 +3,13 @@
 class UsersController < ApplicationController
   before_action :find_users, only: %i[show edit update]
 
-  def show; end
+  def index
+    @user = User.all.paginate(page: params[:page], per_page: 3)
+  end
+
+  def show
+    @article = @user.articles.paginate(page: params[:page], per_page: 3)
+  end
 
   def new
     @user = User.new
@@ -12,8 +18,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome to alpha blog #{@user.username}"
-      redirect_to articles_path
+      flash[:notice] = "Welcome to alpha blog, #{@user.username}"
+      redirect_to(@user)
     else
       render 'new'
     end

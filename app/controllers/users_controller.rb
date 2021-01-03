@@ -2,8 +2,8 @@
 
 class UsersController < ApplicationController
   before_action :find_users, only: %i[show edit update destroy]
-  before_action :require_user, only: [:edit, :update]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_user, only: %i[edit update]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   def index
     @user = User.all.paginate(page: params[:page], per_page: 3)
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:notice] = "User has been deleted successfully"
+    flash[:notice] = 'User has been deleted successfully'
     session[:user_id] = nil if @user == current_user
     redirect_to root_path
   end
@@ -59,9 +59,8 @@ class UsersController < ApplicationController
 
   def require_same_user
     if current_user != @user && !current_user.admin?
-      flash[:alert] = "You can just edit or delete your profile."
+      flash[:alert] = 'You can just edit or delete your profile.'
       redirect_to @user
     end
   end
-
 end
